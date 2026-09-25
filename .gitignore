@@ -1,4 +1,4 @@
-# Respaldo de la conexión git original (Terapias-Bogota) — no subir al repo nuevo
+# Respaldo de la conexion git original de Terapias Bogota
 TestPage/.git-terapias-backup/
 
 # Dependencias
@@ -7,3 +7,16 @@ node_modules/
 # Archivos temporales del sistema
 .DS_Store
 Thumbs.db
+
+# Salesforce local configuration
+.sf/
+
+# Local development tools
+**/.coda/
+
+# Local diagnostic files
+*-diagnosis.json
+
+# Local Salesforce CLI wrapper
+sf-lts.cmd
+`
