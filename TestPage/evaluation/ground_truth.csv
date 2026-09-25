@@ -1,0 +1,31 @@
+RequestId,ExpectedRequestType,ExpectedService,Difficulty
+TB001,Appointment,Fisioterapia,Easy
+TB002,Information,Terapia a domicilio,Easy
+TB003,Reschedule,Otro,Easy
+TB004,Cancellation,Otro,Easy
+TB005,Information,Información general,Easy
+TB006,Appointment,Rehabilitación,Easy
+TB007,Information,Fisioterapia,Medium
+TB008,Reschedule,Otro,Easy
+TB009,Cancellation,Otro,Easy
+TB010,Information,Rehabilitación,Easy
+TB011,Appointment,Terapia a domicilio,Easy
+TB012,Information,Fisioterapia,Medium
+TB013,Appointment,Otro,Medium
+TB014,Reschedule,Otro,Easy
+TB015,Information,Terapia a domicilio,Easy
+TB016,Cancellation,Otro,Easy
+TB017,Appointment,Fisioterapia,Easy
+TB018,Information,Información general,Easy
+TB019,Appointment,Terapia a domicilio,Medium
+TB020,Reschedule,Otro,Easy
+TB021,Information,Información general,Medium
+TB022,Appointment,Otro,Hard
+TB023,Information,Terapia a domicilio,Medium
+TB024,Cancellation,Otro,Medium
+TB025,Information,Fisioterapia,Easy
+TB026,Appointment,Rehabilitación,Medium
+TB027,Reschedule,Terapia a domicilio,Medium
+TB028,Information,Información general,Medium
+TB029,Appointment,Terapia a domicilio,Easy
+TB030,Other,Otro,Hard
