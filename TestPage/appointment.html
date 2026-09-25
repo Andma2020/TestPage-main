@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Agenda tu Cita</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="./img/favicon.svg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Cargando...</span>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-dark px-5 d-none d-lg-block">
+        <div class="row gx-0 align-items-center" style="height: 45px;">
+            <div class="col-lg-8 text-center text-lg-start mb-lg-0">
+                <div class="d-flex flex-wrap">
+                    <a href="#" class="text-light me-4"><i
+                            class="fas fa-map-marker-alt text-primary me-2"></i>Bogotá</a>
+                    <a href="#" class="text-light me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+571
+                        3214304913</a>
+                    <a href="#" class="text-light me-0"><i
+                            class="fas fa-envelope text-primary me-2"></i>terapiasbogota@gmail.com</a>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center text-lg-end">
+                <div class="d-flex align-items-center justify-content-end">
+                    <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-0"><i
+                            class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0">
+            <a href="index.html" class="navbar-brand p-0">
+                <h1 class="text-primary m-0"><i class="fas fa-star-of-life me-3"></i>Terapias Bogotá</h1>
+
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="index.html" class="nav-item nav-link">Inicio</a>
+                    <a href="about.html" class="nav-item nav-link">Nosotros</a>
+                    <a href="service.html" class="nav-item nav-link">Servicios</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Sitios</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="appointment.html" class="dropdown-item active">Agendamiento</a>
+                            <a href="feature.html" class="dropdown-item">¿Que Hacemos</a>
+                            <a href="blog.html" class="dropdown-item">Nuestro Blog</a>
+                            <a href="team.html" class="dropdown-item">Nuestro Equipo</a>
+                            <a href="testimonial.html" class="dropdown-item">Casos de Exito</a>                 
+
+                        </div>
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contacto</a>
+                </div>
+                <a href="#" class="btn btn-primary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0">Book
+                    Appointment</a>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="container-fluid bg-breadcrumb">
+        <div class="container text-center py-5" style="max-width: 900px;">
+            <h3 class="text-white display-3 mb-4 wow fadeInDown" data-wow-delay="0.1s">Agenda tu Cita</h1>
+                <ol class="breadcrumb justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                    <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="#">Sitios</a></li>
+                    <li class="breadcrumb-item active text-primary">Agendamiento</li>
+                </ol>
+        </div>
+    </div>
+
+
+    <div class="container-fluid appointment py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2">
+                    <div class="section-title text-start">
+                        <h4 class="sub-title pe-3 mb-0">Solución Para tu Dolor</h4>
+                        <h1 class="display-4 mb-4">La Mejor Calidad de Servicio con Umbrales mínimos de Dolor</h1>
+                        <p class="mb-4">Se han identificado tres etapas en el procesamiento del dolor agudo,
+                            correspondientes a los llamados tres umbrales de dolor: Umbral 1. Conciencia de la situación
+                            Umbral 2. Percepción de daño tisular Umbral 3. Sensación de que el daño es insoportable</p>
+                        <div class="row g-4">
+                            <div class="col-sm-6">
+                                <div class="d-flex flex-column h-100">
+                                    <div class="mb-4">
+                                        <h5 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Relajación
+                                            Corporal</h5>
+                                        <p class="mb-0">Los ejercicios de relajación en fisioterapia son una herramienta
+                                            muy útil para reducir el estrés y la tensión muscular.Existen técnicas muy
+                                            efectivas para lograr la relajación profunda.</p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5 class="mb-3"><i class="fa fa-check text-primary me-2"></i> Reducción de
+                                            Estrés</h5>
+                                        <p class="mb-0">La fisioterapia puede ayudar a reducir el estrés y la ansiedad a
+                                            través de técnicas como el masaje terapéutico, el estiramiento y la
+                                            relajación muscular.</p>
+                                    </div>
+                                    <div class="text-start mb-4">
+                                        <a href="#" class="btn btn-primary rounded-pill text-white py-3 px-5">Mas
+                                            Detalles</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="video h-100">
+                                    <img src="img/video-img.jpg" class="img-fluid rounded w-100 h-100"
+                                        style="object-fit: cover;" alt="">
+                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
+                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
+                                        data-bs-target="#videoModal">
+                                        <span></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.4s">
+                    <div class="appointment-form rounded p-5">
+                        <p class="fs-4 text-uppercase text-primary">Pongamonos en Contacto</p>
+                        <h1 class="display-5 mb-4">Programación de Citas</h1>
+                        <form id="appointment-form">
+                            <div class="row gy-3 gx-4">
+                                <div class="col-xl-6">
+                                    <input type="text" name="nombre" required
+                                        class="form-control py-3 border-primary bg-transparent"
+                                        placeholder="Nombre completo">
+                                </div>
+                                <div class="col-xl-6">
+                                    <input type="email" name="correo" required
+                                        class="form-control py-3 border-primary bg-transparent"
+                                        placeholder="Correo electrónico">
+                                </div>
+                                <div class="col-xl-6">
+                                    <input type="tel" name="telefono" required class="form-control py-3 border-primary bg-transparent"
+                                        placeholder="Teléfono">
+                                </div>
+                                <div class="col-xl-6">
+                                    <select name="genero" class="form-select py-3 border-primary bg-transparent"
+                                        aria-label="Default select example" required>
+                                        <option value="">Género</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+                                <div class="col-xl-6">
+                                    <input type="date" name="fecha" required class="form-control py-3 border-primary bg-transparent">
+                                </div>
+                                <div class="col-xl-6">
+                                    <select name="especialidad" class="form-select py-3 border-primary bg-transparent"
+                                        aria-label="Default select example" required>
+                                        <option value="">Especialidad</option>
+                                        <option value="Fisioterapia">Fisioterapia</option>
+                                        <option value="Salud Física">Salud Física</option>
+                                        <option value="Tratamientos">Tratamientos</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="comentarios" class="form-control border-primary bg-transparent"
+                                        id="area-text" cols="30" rows="5"
+                                        placeholder="Déjanos tus comentarios (opcional)"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary text-white w-100 py-3 px-5">ENVIAR
+                                        AHORA</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="ratio ratio-16x9">
+                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen
+                            allowscriptaccess="always" allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="text-white mb-4"><i class="fas fa-star-of-life me-3"></i>Terapias Bogotá</h4>
+                        <p>Tanto si vienes por prevención o para resolver alguna molestia, en terapias bogotá promovemos
+                            la educación e implicación del paciente en su propia salud.
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-share fa-2x text-white me-2"></i>
+                            <a class="btn-square btn btn-primary text-white rounded-circle mx-1" href=""><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn-square btn btn-primary text-white rounded-circle mx-1" href=""><i
+                                    class="fab fa-twitter"></i></a>
+                            <a class="btn-square btn btn-primary text-white rounded-circle mx-1" href=""><i
+                                    class="fab fa-instagram"></i></a>
+                            <a class="btn-square btn btn-primary text-white rounded-circle mx-1" href=""><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="mb-4 text-white">Enlaces</h4>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Sobre Nosotros</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Contacto</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Política de Privacidad</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Terminos y Condiciones</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Nuestro Blog & Noticias</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Nuestro equipo</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="mb-4 text-white">Servicios de Terapia</h4>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Todos los Servicios</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Fisioterapia</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> DIagnostico</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Terapia Manual</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Terapia con Masages</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Rehabilitación</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="mb-4 text-white">Información de Contacto</h4>
+                        <a href=""><i class="fa fa-map-marker-alt me-2"></i> Cra 88A 21- 42 </a>
+                        <a href=""><i class="fas fa-envelope me-2"></i> terapiasbogota@gmail.com</a>
+                        <a href=""><i class="fas fa-phone me-2"></i> +571 3214304913</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-md-0">
+                    <span class="text-white"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Terapias
+                            Bogotá</a>, Todos los Derechos Reservados.</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <!-- Configuración Firebase -->
+    <script src="js/firebase-config.js"></script>
+    <!-- Sistema de formularios V2 -->
+    <script src="js/form-manager-v2.js"></script>
+    
+    <!-- Sistema simplificado de formularios -->
+    <script>
+        const STORAGE_KEY = 'terapias_bogota_data';
+        
+        // Sistema de formularios simplificado
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔍 Sistema de formularios simplificado iniciado (appointment.html)');
+            
+            // Configurar formulario de citas
+            const appointmentForm = document.getElementById('appointment-form');
+            if (appointmentForm) {
+                console.log('✅ Formulario appointment-form encontrado');
+                
+                appointmentForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    console.log('📝 Formulario appointment-form enviado');
+                    
+                    try {
+                        // Verificar que los campos existan
+                        const nombreField = appointmentForm.querySelector('[name="nombre"]');
+                        const correoField = appointmentForm.querySelector('[name="correo"]');
+                        const telefonoField = appointmentForm.querySelector('[name="telefono"]');
+                        const generoField = appointmentForm.querySelector('[name="genero"]');
+                        const fechaField = appointmentForm.querySelector('[name="fecha"]');
+                        const especialidadField = appointmentForm.querySelector('[name="especialidad"]');
+                        const comentariosField = appointmentForm.querySelector('[name="comentarios"]');
+                        
+                        console.log('🔍 Campos encontrados:', {
+                            nombre: !!nombreField,
+                            correo: !!correoField,
+                            telefono: !!telefonoField,
+                            genero: !!generoField,
+                            fecha: !!fechaField,
+                            especialidad: !!especialidadField,
+                            comentarios: !!comentariosField
+                        });
+                        
+                        if (!nombreField || !correoField || !telefonoField || !fechaField || !especialidadField) {
+                            throw new Error('Faltan campos requeridos en el formulario');
+                        }
+                        
+                        // Recopilar datos
+                        const formData = {
+                            id: 'cita-' + Date.now(),
+                            timestamp: new Date().toISOString(),
+                            nombre: nombreField.value,
+                            email: correoField.value,
+                            telefono: telefonoField.value,
+                            genero: generoField ? generoField.value : '',
+                            fecha: fechaField.value,
+                            especialidad: especialidadField.value,
+                            comentarios: comentariosField ? comentariosField.value : '',
+                            type: 'cita',
+                            status: 'pendiente'
+                        };
+                        
+                        console.log('📊 Datos recopilados:', formData);
+                        
+                        // Guardar en localStorage
+                        const existingData = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+                        if (!existingData.citas) {
+                            existingData.citas = [];
+                        }
+                        
+                        existingData.citas.push(formData);
+                        localStorage.setItem(STORAGE_KEY, JSON.stringify(existingData));
+                        
+                        console.log('✅ Datos guardados en localStorage');
+                        console.log('📊 Total citas:', existingData.citas.length);
+                        
+                        // Mostrar notificación
+                        alert('¡Cita programada exitosamente!');
+                        
+                        // Limpiar formulario
+                        appointmentForm.reset();
+                        
+                    } catch (error) {
+                        console.error('❌ Error al procesar formulario:', error);
+                        alert('Error al programar la cita: ' + error.message);
+                    }
+                });
+            } else {
+                console.warn('⚠️ Formulario appointment-form no encontrado');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

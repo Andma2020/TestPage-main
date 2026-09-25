@@ -1,0 +1,37 @@
+// ==========================================
+// COMPONENTES - ALERTAS
+// ==========================================
+
+.alert {
+  border-radius: $border-radius;
+  border: none;
+  
+  &.alert-primary {
+    background-color: rgba($primary, 0.1);
+    color: darken($primary, 20%);
+    border-left: 4px solid $primary;
+  }
+  
+  &.alert-success {
+    background-color: rgba($success, 0.1);
+    color: darken($success, 20%);
+    border-left: 4px solid $success;
+  }
+  
+  &.alert-danger {
+    background-color: rgba($danger, 0.1);
+    color: darken($danger, 20%);
+    border-left: 4px solid $danger;
+  }
+  
+  &.alert-warning {
+    background-color: rgba($warning, 0.1);
+    color: darken($warning, 20%);
+    border-left: 4px solid $warning;
+  }
+  
+  .alert-heading {
+    font-weight: 600;
+    color: inherit;
+  }
+}

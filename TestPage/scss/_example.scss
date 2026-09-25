@@ -1,0 +1,188 @@
+// ==========================================
+// EJEMPLO DE USO - SCSS ORGANIZADO
+// ==========================================
+
+// Este archivo muestra ejemplos de cómo usar
+// la estructura organizada de SCSS
+
+// ==========================================
+// 1. USO DE VARIABLES
+// ==========================================
+
+// Colores
+.example-primary {
+  color: $primary;
+  background-color: rgba($primary, 0.1);
+}
+
+.example-secondary {
+  color: $secondary;
+  background-color: rgba($secondary, 0.1);
+}
+
+// Tipografía
+.example-heading {
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  color: $headings-color;
+}
+
+.example-body {
+  font-family: $font-family-base;
+  color: $body-color;
+  line-height: $line-height-base;
+}
+
+// Espaciado
+.example-spaced {
+  padding: $spacer * 2;
+  margin: $spacer $spacer * 2;
+}
+
+// Bordes
+.example-rounded {
+  border-radius: $border-radius;
+  border: $border-width solid $border-color;
+}
+
+// ==========================================
+// 2. COMPONENTES PERSONALIZADOS
+// ==========================================
+
+// Ejemplo de nuevo componente
+.custom-card {
+  @extend .card; // Extender componente existente
+  
+  border: 2px solid $primary;
+  
+  &__header {
+    @extend .card-header;
+    
+    background-color: $primary;
+    color: white;
+  }
+  
+  &__body {
+    @extend .card-body;
+    
+    .custom-card__title {
+      @extend .card-title;
+      
+      color: $primary;
+    }
+  }
+  
+  &--featured {
+    box-shadow: 0 8px 16px rgba($primary, 0.3);
+    transform: scale(1.02);
+  }
+}
+
+// ==========================================
+// 3. LAYOUT PERSONALIZADO
+// ==========================================
+
+// Ejemplo de sección personalizada
+.custom-section {
+  @extend .section;
+  
+  background: linear-gradient(135deg, $light 0%, white 100%);
+  
+  &__title {
+    @extend .section-title;
+    
+    .custom-section__subtitle {
+      @extend .section-subtitle;
+      
+      color: $secondary;
+    }
+  }
+}
+
+// ==========================================
+// 4. UTILIDADES PERSONALIZADAS
+// ==========================================
+
+// Ejemplo de animación personalizada
+@keyframes customPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.custom-pulse {
+  animation: customPulse 2s ease-in-out infinite;
+}
+
+// Ejemplo de helper personalizado
+.custom-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ==========================================
+// 5. RESPONSIVE
+// ==========================================
+
+.custom-responsive {
+  padding: $spacer;
+  
+  @media (min-width: 768px) {
+    padding: $spacer * 2;
+  }
+  
+  @media (min-width: 992px) {
+    padding: $spacer * 3;
+  }
+  
+  @media (min-width: 1200px) {
+    padding: $spacer * 4;
+  }
+}
+
+// ==========================================
+// 6. MIXINS EJEMPLO
+// ==========================================
+
+// Mixin para centrar contenido
+@mixin center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Mixin para sombra personalizada
+@mixin custom-shadow($color: $primary, $opacity: 0.2) {
+  box-shadow: 0 4px 8px rgba($color, $opacity);
+}
+
+// Uso de mixins
+.custom-centered {
+  @include center-content;
+  height: 100vh;
+}
+
+.custom-shadowed {
+  @include custom-shadow($secondary, 0.3);
+}
+
+// ==========================================
+// 7. FUNCIONES EJEMPLO
+// ==========================================
+
+// Función para calcular espaciado
+@function calculate-spacing($multiplier) {
+  @return $spacer * $multiplier;
+}
+
+// Uso de función
+.custom-calculated {
+  padding: calculate-spacing(2.5);
+  margin: calculate-spacing(1.5);
+}

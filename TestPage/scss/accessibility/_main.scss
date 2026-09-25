@@ -1,0 +1,233 @@
+// ==========================================
+// ACCESIBILIDAD - ARCHIVO PRINCIPAL
+// Terapias Bogotá - WCAG 2.1 AA Compliance
+// ==========================================
+
+// Importar todos los módulos de accesibilidad
+@import 'focus';
+@import 'skip-links';
+@import 'high-contrast';
+@import 'reduced-motion';
+@import 'forms';
+@import 'typography';
+
+// ==========================================
+// ESTILOS ADICIONALES DE ACCESIBILIDAD
+// ==========================================
+
+// Landmarks visibles para debugging (opcional)
+.landmark-debug {
+  [role="banner"] {
+    outline: 2px solid red;
+  }
+  
+  [role="navigation"] {
+    outline: 2px solid blue;
+  }
+  
+  [role="main"] {
+    outline: 2px solid green;
+  }
+  
+  [role="complementary"] {
+    outline: 2px solid orange;
+  }
+  
+  [role="contentinfo"] {
+    outline: 2px solid purple;
+  }
+}
+
+// Indicadores de carga accesibles
+[aria-busy="true"] {
+  cursor: wait;
+}
+
+// Elementos deshabilitados accesibles
+[disabled],
+[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+// Elementos expandidos/colapsados accesibles
+[aria-expanded="true"] {
+  // Estilos para estado expandido
+}
+
+[aria-expanded="false"] {
+  // Estilos para estado colapsado
+}
+
+// Elementos ocultos accesibles
+[hidden],
+[aria-hidden="true"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+// Live regions accesibles
+[aria-live="polite"],
+[aria-live="assertive"] {
+  // Estilos para live regions
+}
+
+// Elementos seleccionados accesibles
+[aria-selected="true"] {
+  background-color: rgba($primary, 0.1);
+  font-weight: 600;
+}
+
+// Elementos presionados accesibles
+[aria-pressed="true"] {
+  background-color: $primary;
+  color: white;
+}
+
+// Elementos con error accesible
+[aria-invalid="true"] {
+  border-color: $danger;
+  
+  &:focus {
+    outline: 3px solid $danger;
+    outline-offset: 2px;
+  }
+}
+
+// Tooltips accesibles
+[role="tooltip"] {
+  position: absolute;
+  background-color: $dark;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: $border-radius;
+  font-size: 0.875rem;
+  z-index: 1000;
+  max-width: 300px;
+}
+
+// Modales accesibles
+[role="dialog"] {
+  // Estilos para diálogos modales
+}
+
+// Alertas accesibles
+[role="alert"] {
+  padding: 1rem;
+  border-radius: $border-radius;
+  margin-bottom: 1rem;
+  
+  &.alert-success {
+    background-color: rgba($success, 0.1);
+    border-left: 4px solid $success;
+    color: darken($success, 20%);
+  }
+  
+  &.alert-danger {
+    background-color: rgba($danger, 0.1);
+    border-left: 4px solid $danger;
+    color: darken($danger, 20%);
+  }
+  
+  &.alert-warning {
+    background-color: rgba($warning, 0.1);
+    border-left: 4px solid $warning;
+    color: darken($warning, 20%);
+  }
+  
+  &.alert-info {
+    background-color: rgba($info, 0.1);
+    border-left: 4px solid $info;
+    color: darken($info, 20%);
+  }
+}
+
+// Tablas accesibles
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+  
+  caption {
+    caption-side: bottom;
+    text-align: center;
+    font-style: italic;
+    color: $body-color;
+    margin-top: 0.5rem;
+  }
+  
+  th,
+  td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid $gray-300;
+  }
+  
+  th {
+    background-color: $light;
+    font-weight: 600;
+    border-bottom: 2px solid $gray-400;
+  }
+  
+  tr:hover {
+    background-color: rgba($primary, 0.05);
+  }
+}
+
+// Progress bars accesibles
+[role="progressbar"] {
+  height: 1rem;
+  background-color: $gray-200;
+  border-radius: $border-radius;
+  overflow: hidden;
+  
+  &[aria-valuenow] {
+    position: relative;
+    
+    &::after {
+      content: attr(aria-valuenow) "%";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+  }
+}
+
+// Sliders accesibles
+input[type="range"] {
+  width: 100%;
+  height: 0.5rem;
+  background: $gray-200;
+  border-radius: $border-radius;
+  outline: none;
+  
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background: $primary;
+    cursor: pointer;
+  }
+  
+  &::-moz-range-thumb {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background: $primary;
+    cursor: pointer;
+    border: none;
+  }
+  
+  &:focus {
+    outline: 3px solid $primary;
+    outline-offset: 2px;
+  }
+}

@@ -1,0 +1,93 @@
+// ==========================================
+// LAYOUT - PIE DE PÁGINA
+// ==========================================
+
+.footer {
+  background-color: $dark;
+  color: white;
+  padding: 3rem 0 1rem;
+  
+  a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: $primary;
+    }
+  }
+  
+  .footer-title {
+    font-family: $headings-font-family;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: $primary;
+  }
+  
+  .footer-link {
+    display: block;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  
+  .social-links {
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      margin-right: 0.5rem;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background-color: $primary;
+        transform: translateY(-3px);
+      }
+    }
+  }
+  
+  .copyright {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+// Botón para volver arriba
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: $primary;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  &:hover {
+    background-color: darken($primary, 10%);
+    transform: translateY(-5px);
+  }
+}

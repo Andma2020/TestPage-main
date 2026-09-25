@@ -1,0 +1,26 @@
+// ==========================================
+// VARIABLES - COLORES
+// ==========================================
+
+// Colores principales
+$primary: #15B9D9;
+$secondary: #EFA286;
+$light: #FAF9FB;
+$dark: #202135;
+
+// Colores del cuerpo
+$body-color: #8D8D8D;
+
+// Colores de encabezados
+$headings-color: $dark;
+
+// Colores de enlaces
+$link-color: $primary;
+$link-decoration: none;
+$link-hover-color: darken($primary, 15%);
+
+// Colores de estado
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;

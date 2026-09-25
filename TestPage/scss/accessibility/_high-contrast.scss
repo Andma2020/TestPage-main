@@ -1,0 +1,56 @@
+// ==========================================
+// ACCESIBILIDAD - ALTO CONTRASTE
+// ==========================================
+
+// Soporte para modo de alto contraste
+@media (prefers-contrast: high) {
+  * {
+    background-color: white !important;
+    color: black !important;
+    border-color: black !important;
+  }
+  
+  a {
+    color: blue !important;
+    text-decoration: underline !important;
+  }
+  
+  a:focus,
+  button:focus,
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: 3px solid black !important;
+    outline-offset: 2px;
+  }
+  
+  .btn-primary {
+    background-color: black !important;
+    color: white !important;
+    border: 2px solid black !important;
+  }
+  
+  .btn-secondary {
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid black !important;
+  }
+}
+
+// Clase manual para alto contraste
+.high-contrast {
+  * {
+    background-color: white !important;
+    color: black !important;
+    border-color: black !important;
+  }
+  
+  a {
+    color: blue !important;
+    text-decoration: underline !important;
+  }
+  
+  img {
+    filter: grayscale(100%) contrast(120%);
+  }
+}

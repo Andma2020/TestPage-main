@@ -1,0 +1,20 @@
+{
+  "name": "ProyectoFinal",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server . -p 8080 -o",
+    "dev": "http-server . -p 8080 -o",
+    "test": "echo \"test\" && exit 1",
+    "git:commit": "node scripts/git-automation.js",
+    "git:commit:watch": "node scripts/git-automation.js --watch",
+    "git:commit:message": "node scripts/git-automation.js --message",
+    "deploy": "npm run git:commit && echo \"✅ Cambios desplegados exitosamente\""
+  },
+  "author": "Anderson Mantilla",
+  "license": "ISC",
+  "description": "Test Page",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

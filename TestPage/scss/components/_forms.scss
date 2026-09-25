@@ -1,0 +1,64 @@
+// ==========================================
+// COMPONENTES - FORMULARIOS
+// ==========================================
+
+.form-control {
+  border-radius: $border-radius;
+  border-color: $gray-300;
+  
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 0.2rem rgba($primary, 0.25);
+  }
+}
+
+.form-select {
+  border-radius: $border-radius;
+  border-color: $gray-300;
+  
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 0.2rem rgba($primary, 0.25);
+  }
+}
+
+.form-check-input {
+  &:checked {
+    background-color: $primary;
+    border-color: $primary;
+  }
+}
+
+.form-floating {
+  > .form-control,
+  > .form-select {
+    &:focus ~ label {
+      color: $primary;
+    }
+  }
+}
+
+// Formularios con fondo transparente
+.form-control.bg-transparent,
+.form-select.bg-transparent {
+  background-color: transparent !important;
+  
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+// Formularios con borde primario
+.form-control.border-primary,
+.form-select.border-primary {
+  border-color: $primary !important;
+}
+
+// Formularios con borde blanco
+.form-control.border-white {
+  border-color: white !important;
+  
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}

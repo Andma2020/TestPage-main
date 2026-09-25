@@ -1,0 +1,59 @@
+// ==========================================
+// ACCESIBILIDAD - REDUCIÓN DE MOVIMIENTO
+// ==========================================
+
+// Respetar preferencia de reducción de movimiento
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  // Deshabilitar animaciones específicas
+  .fade-in,
+  .fade-in-up,
+  .fade-in-down,
+  .fade-in-left,
+  .fade-in-right,
+  .slide-in-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  // Deshabilitar transiciones
+  .btn,
+  .card,
+  .nav-link,
+  .dropdown-item {
+    transition: none !important;
+  }
+  
+  // Deshabilitar hover effects
+  .btn:hover,
+  .card:hover,
+  .nav-link:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  
+  // Deshabilitar scroll suave
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
+// Clase manual para reducción de movimiento
+.reduced-motion {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

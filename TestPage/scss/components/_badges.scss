@@ -1,0 +1,33 @@
+// ==========================================
+// COMPONENTES - BADGES
+// ==========================================
+
+.badge {
+  border-radius: $border-radius;
+  font-weight: 500;
+  padding: 0.35em 0.65em;
+  
+  &.bg-primary {
+    background-color: $primary;
+  }
+  
+  &.bg-secondary {
+    background-color: $secondary;
+  }
+  
+  &.bg-success {
+    background-color: $success;
+  }
+  
+  &.bg-info {
+    background-color: $info;
+  }
+  
+  &.bg-warning {
+    background-color: $warning;
+  }
+  
+  &.bg-danger {
+    background-color: $danger;
+  }
+}

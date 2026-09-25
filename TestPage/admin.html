@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Administración - Terapias Bogotá</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .admin-header {
+            background: linear-gradient(135deg, #15B9D9 0%, #EFA286 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .stats-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .data-table {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .table thead {
+            background: linear-gradient(135deg, #15B9D9 0%, #EFA286 100%);
+            color: white;
+        }
+        
+        .badge-cita {
+            background-color: #15B9D9;
+        }
+        
+        .badge-contacto {
+            background-color: #198754;
+        }
+        
+        .badge-pendiente {
+            background-color: #ffc107;
+            color: #000;
+        }
+        
+        .badge-completado {
+            background-color: #198754;
+        }
+        
+        .badge-cancelado {
+            background-color: #dc3545;
+        }
+        
+        .action-btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #6c757d;
+        }
+        
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #dee2e6;
+        }
+        
+        .filter-section {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .status-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+        }
+        
+        .user-info {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .refresh-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .refresh-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+        
+        .data-source-badge {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="admin-header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="mb-0"><i class="fas fa-cogs me-2"></i>Panel Administrativo</h1>
+                    <p class="mb-0">Terapias Bogotá - Gestión de Formularios</p>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="user-info">
+                        <i class="fas fa-user-circle me-2"></i>
+                        <span id="current-user">Admin</span>
+                    </div>
+                    <button class="btn btn-outline-light refresh-btn" onclick="refreshData()">
+                        <i class="fas fa-sync-alt me-2"></i>Actualizar
+                    </button>
+                    <a href="index.html" class="btn btn-outline-light refresh-btn">
+                        <i class="fas fa-home me-2"></i>Sitio
+                    </a>
+                    <button class="btn btn-danger refresh-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt me-2"></i>Salir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Estadísticas -->
+        <div class="row mb-4">
+            <div class="col-md-3 mb-3">
+                <div class="stats-card bg-primary text-white p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h3 class="mb-0" id="total-citas">0</h3>
+                            <p class="mb-0">Total Citas</p>
+                        </div>
+                        <i class="fas fa-calendar-check fa-2x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="stats-card bg-success text-white p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h3 class="mb-0" id="total-contactos">0</h3>
+                            <p class="mb-0">Total Contactos</p>
+                        </div>
+                        <i class="fas fa-envelope fa-2x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="stats-card bg-warning text-dark p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h3 class="mb-0" id="total-pendientes">0</h3>
+                            <p class="mb-0">Pendientes</p>
+                        </div>
+                        <i class="fas fa-clock fa-2x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="stats-card bg-info text-white p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h3 class="mb-0" id="data-source">Local</h3>
+                            <p class="mb-0">Fuente de Datos</p>
+                        </div>
+                        <i class="fas fa-database fa-2x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label class="form-label fw-bold"><i class="fas fa-filter me-2"></i>Filtrar por Tipo</label>
+                    <select class="form-select" id="filter-type" onchange="filterData()">
+                        <option value="">Todos los tipos</option>
+                        <option value="cita">Citas</option>
+                        <option value="contacto">Contactos</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label fw-bold"><i class="fas fa-search me-2"></i>Buscar</label>
+                    <input type="text" class="form-control" id="search-input" placeholder="Buscar por nombre, email, teléfono..." oninput="filterData()">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label fw-bold"><i class="fas fa-download me-2"></i>Exportar</label>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-primary flex-grow-1" onclick="exportData('citas')">
+                            <i class="fas fa-file-csv me-2"></i>Citas
+                        </button>
+                        <button class="btn btn-success flex-grow-1" onclick="exportData('contactos')">
+                            <i class="fas fa-file-csv me-2"></i>Contactos
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de Datos -->
+        <div class="data-table">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-table-body">
+                        <!-- Los datos se cargarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Estado de carga -->
+            <div id="loading-state" class="loading-spinner d-none">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Cargando...</span>
+                </div>
+            </div>
+            
+            <!-- Estado vacío -->
+            <div id="empty-state" class="empty-state d-none">
+                <i class="fas fa-inbox"></i>
+                <h3>No hay registros disponibles</h3>
+                <p>Los formularios enviados desde el sitio web aparecerán aquí</p>
+                <p class="text-muted small">Los usuarios pueden enviar citas y contactos desde las páginas del sitio</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalles -->
+    <div class="modal fade" id="detailModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-info-circle me-2"></i>Detalles del Registro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Los detalles se cargarán aquí -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth-manager.js"></script>
+    <script src="js/form-manager-v2.js"></script>
+    <script>
+        // Variables globales
+        let allData = [];
+        let filteredData = [];
+        const detailModal = new bootstrap.Modal(document.getElementById('detailModal'));
+
+        // Verificar autenticación al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!authManager.isAuthenticated()) {
+                window.location.href = 'admin-login.html';
+                return;
+            }
+            
+            // Mostrar usuario actual
+            const user = authManager.getCurrentUser();
+            if (user) {
+                document.getElementById('current-user').textContent = user.username;
+            }
+            
+            // Cargar datos iniciales
+            loadData();
+        });
+
+        // Cargar datos
+        async function loadData() {
+            showLoading(true);
+            
+            try {
+                console.log('🔍 Iniciando carga de datos...');
+                
+                // Cargar directamente desde localStorage
+                const storageKey = 'terapias_bogota_data';
+                const rawData = localStorage.getItem(storageKey);
+                console.log('📊 Datos crudos de localStorage:', rawData);
+                
+                let data = { citas: [], contactos: [] };
+                
+                if (rawData) {
+                    try {
+                        data = JSON.parse(rawData);
+                        console.log('📊 Datos parseados:', data);
+                    } catch (e) {
+                        console.error('❌ Error al parsear datos:', e);
+                    }
+                }
+                
+                console.log('📊 Citas:', data.citas?.length || 0);
+                console.log('📊 Contactos:', data.contactos?.length || 0);
+                
+                // Combinar citas y contactos
+                allData = [
+                    ...(data.citas || []).map(item => ({ ...item, type: 'cita' })),
+                    ...(data.contactos || []).map(item => ({ ...item, type: 'contacto' }))
+                ];
+                
+                console.log('📊 Datos combinados:', allData.length);
+                
+                // Ordenar por fecha (más reciente primero)
+                allData.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                
+                console.log('📊 Datos ordenados');
+                
+                // Aplicar filtros actuales
+                filterData();
+                
+                console.log('📊 Datos filtrados:', filteredData.length);
+                
+                // Actualizar estadísticas
+                updateStats(data);
+                
+                // Actualizar fuente de datos
+                updateDataSource();
+                
+                console.log('✅ Datos cargados exitosamente');
+                
+            } catch (error) {
+                console.error('❌ Error al cargar datos:', error);
+                showNotification('Error al cargar los datos', 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Filtrar datos
+        function filterData() {
+            console.log('🔍 Iniciando filtrado de datos...');
+            console.log('📊 allData.length:', allData.length);
+            
+            const typeFilter = document.getElementById('filter-type').value;
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            
+            console.log('🔍 Filtro tipo:', typeFilter);
+            console.log('🔍 Término búsqueda:', searchTerm);
+
+            filteredData = allData.filter(item => {
+                // Filtro por tipo
+                if (typeFilter && item.type !== typeFilter) return false;
+
+                // Filtro por búsqueda
+                if (searchTerm) {
+                    const searchableText = Object.values(item).join(' ').toLowerCase();
+                    if (!searchableText.includes(searchTerm)) return false;
+                }
+
+                return true;
+            });
+
+            console.log('📊 filteredData.length:', filteredData.length);
+            console.log('🔍 Datos filtrados:', filteredData);
+
+            renderTable();
+        }
+
+        // Renderizar tabla
+        function renderTable() {
+            console.log('🔍 Iniciando renderizado de tabla...');
+            console.log('📊 filteredData.length:', filteredData.length);
+            
+            const tableBody = document.getElementById('data-table-body');
+            const emptyState = document.getElementById('empty-state');
+            
+            console.log('🔍 Elementos DOM:', {
+                tableBody: !!tableBody,
+                emptyState: !!emptyState
+            });
+            
+            if (filteredData.length === 0) {
+                console.log('⚠️ No hay datos para mostrar');
+                tableBody.innerHTML = '';
+                emptyState.classList.remove('d-none');
+                return;
+            }
+            
+            console.log('✅ Hay datos para mostrar:', filteredData.length);
+            emptyState.classList.add('d-none');
+            
+            tableBody.innerHTML = filteredData.map(item => `
+                <tr>
+                    <td>
+                        <span class="badge ${item.type === 'cita' ? 'badge-cita' : 'badge-contacto'}">
+                            ${item.type === 'cita' ? 'Cita' : 'Contacto'}
+                        </span>
+                    </td>
+                    <td>${item.nombre || 'N/A'}</td>
+                    <td>${item.email || item.correo || 'N/A'}</td>
+                    <td>${item.telefono || 'N/A'}</td>
+                    <td>${formatDate(item.timestamp)}</td>
+                    <td>
+                        <span class="badge status-badge ${getStatusBadgeClass(item.status)}">
+                            ${item.status || 'pendiente'}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-sm btn-info action-btn" onclick="showDetails('${item.id}')" title="Ver detalles">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-success action-btn" onclick="updateStatus('${item.id}', 'completado')" title="Marcar como completado">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger action-btn" onclick="deleteRecord('${item.id}', '${item.type}')" title="Eliminar">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Mostrar detalles
+        function showDetails(id) {
+            const item = allData.find(data => data.id === id);
+            if (!item) return;
+
+            let detailsHTML = `
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="fw-bold"><i class="fas fa-user me-2"></i>Información Personal</h6>
+                        <p><strong>Nombre:</strong> ${item.nombre || 'N/A'}</p>
+                        <p><strong>Email:</strong> ${item.email || item.correo || 'N/A'}</p>
+                        <p><strong>Teléfono:</strong> ${item.telefono || 'N/A'}</p>
+                        ${item.genero ? `<p><strong>Género:</strong> ${item.genero}</p>` : ''}
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="fw-bold"><i class="fas fa-info-circle me-2"></i>Información del Registro</h6>
+                        <p><strong>Tipo:</strong> ${item.type === 'cita' ? 'Cita' : 'Contacto'}</p>
+                        <p><strong>Fecha:</strong> ${formatDate(item.timestamp)}</p>
+                        <p><strong>Estado:</strong> ${item.status || 'pendiente'}</p>
+                        ${item.ip ? `<p><strong>IP:</strong> ${item.ip}</p>` : ''}
+                    </div>
+                </div>
+            `;
+
+            if (item.type === 'cita') {
+                detailsHTML += `
+                    <div class="mt-3">
+                        <h6 class="fw-bold"><i class="fas fa-calendar me-2"></i>Información de la Cita</h6>
+                        ${item.fecha ? `<p><strong>Fecha deseada:</strong> ${item.fecha}</p>` : ''}
+                        ${item.especialidad ? `<p><strong>Especialidad:</strong> ${item.especialidad}</p>` : ''}
+                    </div>
+                `;
+            }
+
+            if (item.comentarios) {
+                detailsHTML += `
+                    <div class="mt-3">
+                        <h6 class="fw-bold"><i class="fas fa-comment me-2"></i>Comentarios</h6>
+                        <p class="mt-2 p-3 bg-light rounded">${item.comentarios}</p>
+                    </div>
+                `;
+            }
+
+            document.getElementById('modal-body').innerHTML = detailsHTML;
+            detailModal.show();
+        }
+
+        // Actualizar estado
+        async function updateStatus(id, status) {
+            try {
+                const item = allData.find(data => data.id === id);
+                if (!item) return;
+
+                // Actualizar directamente en localStorage
+                const storageKey = 'terapias_bogota_data';
+                const existingData = JSON.parse(localStorage.getItem(storageKey) || '{}');
+                
+                if (item.type === 'cita') {
+                    const citaIndex = existingData.citas.findIndex(c => c.id === id);
+                    if (citaIndex !== -1) {
+                        existingData.citas[citaIndex].status = status;
+                    }
+                } else if (item.type === 'contacto') {
+                    const contactoIndex = existingData.contactos.findIndex(c => c.id === id);
+                    if (contactoIndex !== -1) {
+                        existingData.contactos[contactoIndex].status = status;
+                    }
+                }
+                
+                localStorage.setItem(storageKey, JSON.stringify(existingData));
+                
+                showNotification(`Estado actualizado a "${status}"`, 'success');
+                loadData();
+            } catch (error) {
+                console.error('Error al actualizar estado:', error);
+                showNotification('Error al actualizar el estado', 'error');
+            }
+        }
+
+        // Eliminar registro
+        async function deleteRecord(id, type) {
+            if (!confirm('¿Estás seguro de que quieres eliminar este registro?')) return;
+
+            try {
+                // Eliminar directamente de localStorage
+                const storageKey = 'terapias_bogota_data';
+                const existingData = JSON.parse(localStorage.getItem(storageKey) || '{}');
+                
+                if (type === 'cita') {
+                    existingData.citas = existingData.citas.filter(c => c.id !== id);
+                } else if (type === 'contacto') {
+                    existingData.contactos = existingData.contactos.filter(c => c.id !== id);
+                }
+                
+                localStorage.setItem(storageKey, JSON.stringify(existingData));
+                
+                showNotification('Registro eliminado correctamente', 'success');
+                loadData();
+            } catch (error) {
+                console.error('Error al eliminar registro:', error);
+                showNotification('Error al eliminar el registro', 'error');
+            }
+        }
+
+        // Exportar datos
+        async function exportData(type) {
+            try {
+                const storageKey = 'terapias_bogota_data';
+                const existingData = JSON.parse(localStorage.getItem(storageKey) || '{}');
+                
+                let dataToExport = [];
+                let filename = '';
+                
+                if (type === 'citas') {
+                    dataToExport = existingData.citas || [];
+                    filename = 'citas_terapias_bogota.csv';
+                } else if (type === 'contactos') {
+                    dataToExport = existingData.contactos || [];
+                    filename = 'contactos_terapias_bogota.csv';
+                } else {
+                    dataToExport = [...(existingData.citas || []), ...(existingData.contactos || [])];
+                    filename = 'todos_los_registros_terapias_bogota.csv';
+                }
+                
+                if (dataToExport.length === 0) {
+                    showNotification('No hay datos para exportar', 'warning');
+                    return;
+                }
+                
+                // Crear CSV
+                const headers = Object.keys(dataToExport[0]);
+                const csvContent = [
+                    headers.join(','),
+                    ...dataToExport.map(row => headers.map(header => {
+                        const value = row[header] || '';
+                        // Escapar comillas y envolver en comillas si contiene comas
+                        const stringValue = String(value);
+                        if (stringValue.includes(',') || stringValue.includes('"') || stringValue.includes('\n')) {
+                            return `"${stringValue.replace(/"/g, '""')}"`;
+                        }
+                        return stringValue;
+                    }).join(','))
+                ].join('\n');
+                
+                // Descargar archivo
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement('a');
+                const url = URL.createObjectURL(blob);
+                
+                link.setAttribute('href', url);
+                link.setAttribute('download', filename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                showNotification('Datos exportados exitosamente', 'success');
+            } catch (error) {
+                console.error('Error al exportar datos:', error);
+                showNotification('Error al exportar datos', 'error');
+            }
+        }
+
+        // Actualizar datos
+        function refreshData() {
+            loadData();
+            showNotification('Datos actualizados', 'info');
+        }
+
+        // Cerrar sesión
+        function logout() {
+            if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+                authManager.logout();
+                window.location.href = 'admin-login.html';
+            }
+        }
+
+        // Actualizar estadísticas
+        function updateStats(data) {
+            document.getElementById('total-citas').textContent = data.citas.length;
+            document.getElementById('total-contactos').textContent = data.contactos.length;
+            
+            const pendientes = [...data.citas, ...data.contactos].filter(
+                item => !item.status || item.status === 'pendiente'
+            ).length;
+            
+            document.getElementById('total-pendientes').textContent = pendientes;
+        }
+
+        // Actualizar fuente de datos
+        function updateDataSource() {
+            const dataSource = 'Local (localStorage)';
+            document.getElementById('data-source').textContent = dataSource;
+        }
+
+        // Mostrar/ocultar loading
+        function showLoading(show) {
+            const loadingState = document.getElementById('loading-state');
+            const tableBody = document.getElementById('data-table-body');
+            
+            if (show) {
+                loadingState.classList.remove('d-none');
+                tableBody.innerHTML = '';
+            } else {
+                loadingState.classList.add('d-none');
+            }
+        }
+
+        // Formatear fecha
+        function formatDate(dateString) {
+            if (!dateString) return 'N/A';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        // Obtener clase de badge para estado
+        function getStatusBadgeClass(status) {
+            switch (status) {
+                case 'completado': return 'badge-completado';
+                case 'cancelado': return 'badge-cancelado';
+                default: return 'badge-pendiente';
+            }
+        }
+
+        // Mostrar notificación
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+            notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+            notification.innerHTML = `
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'} me-2"></i>
+                ${message}
+            `;
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

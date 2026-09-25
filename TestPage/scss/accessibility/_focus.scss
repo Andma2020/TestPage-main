@@ -1,0 +1,55 @@
+// ==========================================
+// ACCESIBILIDAD - FOCUS VISIBLE
+// ==========================================
+
+// Focus visible para navegación por teclado
+:focus-visible {
+  outline: 3px solid $primary;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba($primary, 0.3);
+}
+
+// Focus para todos los elementos interactivos
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid $primary;
+  outline-offset: 2px;
+}
+
+// Remover outline solo cuando no se usa teclado
+.focus-none:focus {
+  outline: none;
+}
+
+// Focus mejorado para botones
+.btn:focus {
+  outline: 3px solid $primary;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba($primary, 0.3);
+}
+
+// Focus para inputs de formulario
+.form-control:focus,
+.form-select:focus {
+  outline: 3px solid $primary;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba($primary, 0.3);
+  border-color: $primary;
+}
+
+// Focus para enlaces de navegación
+.nav-link:focus,
+.dropdown-item:focus {
+  outline: 3px solid $primary;
+  outline-offset: 2px;
+  background-color: rgba($primary, 0.1);
+}
+
+// Focus para elementos interactivos
+[tabindex]:focus {
+  outline: 3px solid $primary;
+  outline-offset: 2px;
+}

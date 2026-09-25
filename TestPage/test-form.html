@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Formulario - Terapias Bogotá</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="mb-0">🧪 Prueba de Formulario</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <strong>Propósito:</strong> Verificar que el sistema de formularios funciona correctamente
+                        </div>
+                        
+                        <form id="test-form" novalidate>
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre completo</label>
+                                <input type="text" id="nombre" name="nombre" required class="form-control">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" name="email" required class="form-control">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="telefono" class="form-label">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" required class="form-control">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="fecha" class="form-label">Fecha</label>
+                                <input type="date" id="fecha" name="fecha" required class="form-control">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="especialidad" class="form-label">Especialidad</label>
+                                <select id="especialidad" name="especialidad" required class="form-control">
+                                    <option value="">Selecciona una especialidad</option>
+                                    <option value="Psicología">Psicología</option>
+                                    <option value="Terapia Ocupacional">Terapia Ocupacional</option>
+                                    <option value="Fisioterapia">Fisioterapia</option>
+                                    <option value="Logopedia">Logopedia</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary w-100">
+                                📝 Enviar Formulario de Prueba
+                            </button>
+                        </form>
+                        
+                        <div id="result" class="mt-4"></div>
+                    </div>
+                </div>
+                
+                <div class="card shadow mt-4">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="mb-0">📊 Estado del Sistema</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="system-status">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sistema de prueba de formularios
+        const STORAGE_KEY = 'terapias_bogota_data';
+        
+        // Verificar estado del sistema
+        function checkSystemStatus() {
+            const statusDiv = document.getElementById('system-status');
+            
+            try {
+                // Verificar localStorage
+                const existingData = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+                const citasCount = existingData.citas?.length || 0;
+                const contactosCount = existingData.contactos?.length || 0;
+                
+                statusDiv.innerHTML = `
+                    <div class="alert alert-success">
+                        <h5>✅ Sistema Funcional</h5>
+                        <ul class="mb-0">
+                            <li><strong>LocalStorage:</strong> Disponible</li>
+                            <li><strong>Storage Key:</strong> ${STORAGE_KEY}</li>
+                            <li><strong>Citas registradas:</strong> ${citasCount}</li>
+                            <li><strong>Contactos registrados:</strong> ${contactosCount}</li>
+                            <li><strong>Total registros:</strong> ${citasCount + contactosCount}</li>
+                        </ul>
+                    </div>
+                    
+                    ${citasCount > 0 || contactosCount > 0 ? `
+                        <div class="alert alert-info">
+                            <h6>📋 Registros existentes:</h6>
+                            <pre class="mb-0" style="max-height: 200px; overflow-y: auto;">${JSON.stringify(existingData, null, 2)}</pre>
+                        </div>
+                    ` : ''}
+                `;
+            } catch (error) {
+                statusDiv.innerHTML = `
+                    <div class="alert alert-danger">
+                        <h5>❌ Error en el sistema</h5>
+                        <p class="mb-0">${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Manejar envío del formulario
+        document.getElementById('test-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const resultDiv = document.getElementById('result');
+            
+            try {
+                // Recopilar datos
+                const formData = {
+                    id: 'cita-' + Date.now(),
+                    timestamp: new Date().toISOString(),
+                    nombre: document.getElementById('nombre').value,
+                    email: document.getElementById('email').value,
+                    telefono: document.getElementById('telefono').value,
+                    fecha: document.getElementById('fecha').value,
+                    especialidad: document.getElementById('especialidad').value,
+                    type: 'cita'
+                };
+                
+                // Validar
+                if (!formData.nombre || !formData.email || !formData.telefono || !formData.fecha || !formData.especialidad) {
+                    throw new Error('Todos los campos son requeridos');
+                }
+                
+                // Guardar en localStorage
+                const existingData = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+                
+                if (!existingData.citas) {
+                    existingData.citas = [];
+                }
+                
+                existingData.citas.push(formData);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(existingData));
+                
+                // Mostrar resultado
+                resultDiv.innerHTML = `
+                    <div class="alert alert-success">
+                        <h5>✅ Formulario enviado exitosamente</h5>
+                        <p><strong>ID:</strong> ${formData.id}</p>
+                        <p><strong>Nombre:</strong> ${formData.nombre}</p>
+                        <p><strong>Email:</strong> ${formData.email}</p>
+                        <p><strong>Fecha:</strong> ${formData.fecha}</p>
+                        <p><strong>Especialidad:</strong> ${formData.especialidad}</p>
+                        <hr>
+                        <p><strong>Total citas:</strong> ${existingData.citas.length}</p>
+                    </div>
+                `;
+                
+                // Limpiar formulario
+                this.reset();
+                
+                // Actualizar estado
+                checkSystemStatus();
+                
+                console.log('✅ Datos guardados:', formData);
+                console.log('📊 Total registros:', existingData.citas.length);
+                
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="alert alert-danger">
+                        <h5>❌ Error al enviar formulario</h5>
+                        <p class="mb-0">${error.message}</p>
+                    </div>
+                `;
+                console.error('❌ Error:', error);
+            }
+        });
+        
+        // Configurar fecha mínima
+        document.getElementById('fecha').min = new Date().toISOString().split('T')[0];
+        
+        // Verificar estado inicial
+        checkSystemStatus();
+        
+        // Mostrar información de depuración
+        console.log('🔍 Sistema de prueba iniciado');
+        console.log('📁 Storage Key:', STORAGE_KEY);
+        console.log('🌐 URL:', window.location.href);
+    </script>
+</body>
+</html>

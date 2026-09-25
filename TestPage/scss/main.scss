@@ -1,0 +1,137 @@
+// ==========================================
+// ARCHIVO PRINCIPAL SCSS
+// Terapias Bogotá
+// ==========================================
+
+// 1. Variables
+@import 'variables/colors';
+@import 'variables/typography';
+@import 'variables/spacing';
+@import 'variables/borders';
+
+// 2. Componentes
+@import 'components/buttons';
+@import 'components/forms';
+@import 'components/cards';
+@import 'components/badges';
+@import 'components/alerts';
+
+// 3. Layout
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/hero';
+@import 'layout/sections';
+
+// 4. Utilidades
+@import 'utilities/animations';
+@import 'utilities/helpers';
+
+// 5. Accesibilidad (WCAG 2.1 AA Compliance)
+@import 'accessibility/main';
+
+// 6. Bootstrap (mantener compatibilidad)
+@import 'bootstrap/scss/bootstrap';
+
+// 6. Estilos personalizados adicionales
+// ==========================================
+
+// Spinner de carga
+#spinner {
+  &.show {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+}
+
+// Breadcrumb
+.bg-breadcrumb {
+  background: linear-gradient(135deg, rgba($primary, 0.9) 0%, rgba($secondary, 0.9) 100%);
+  padding: 3rem 0;
+  
+  .breadcrumb-item {
+    color: white;
+    
+    &.active {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    a {
+      color: white;
+      text-decoration: none;
+      
+      &:hover {
+        color: $light;
+      }
+    }
+  }
+}
+
+// Secciones con fondo
+.bg-light {
+  background-color: $light !important;
+}
+
+.bg-primary {
+  background-color: $primary !important;
+}
+
+.bg-dark {
+  background-color: $dark !important;
+}
+
+// Texto
+.text-primary {
+  color: $primary !important;
+}
+
+.text-secondary {
+  color: $secondary !important;
+}
+
+// Separadores
+.divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, $primary, transparent);
+  margin: 2rem 0;
+}
+
+// Imágenes
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+// Iconos
+.fa,
+.fas,
+.far,
+.fab {
+  line-height: 1;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .header-carousel .header-carousel-item {
+    height: 400px;
+  }
+  
+  .carousel-caption {
+    padding: 1rem;
+    
+    h1 {
+      font-size: 1.5rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+}

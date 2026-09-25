@@ -1,0 +1,21 @@
+// ==========================================
+// VARIABLES - ESPACIADO
+// ==========================================
+
+// Espaciado base
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
+
+// Márgenes negativos
+$enable-negative-margins: true;
+
+// Padding y margin
+$paragraph-margin-bottom: 1rem;
+$heading-margin-bottom: $spacer / 2;

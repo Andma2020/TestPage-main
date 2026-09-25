@@ -1,0 +1,50 @@
+// ==========================================
+// ACCESIBILIDAD - SKIP LINKS
+// ==========================================
+
+// Skip links para navegación por teclado
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: $primary;
+  color: white;
+  padding: 8px;
+  z-index: 10000;
+  text-decoration: none;
+  font-weight: 600;
+  
+  &:focus {
+    top: 0;
+    left: 0;
+    outline: 3px solid $dark;
+    outline-offset: 2px;
+  }
+}
+
+// Skip link para contenido principal
+.skip-to-content {
+  @extend .skip-link;
+  
+  &:focus {
+    top: 0;
+  }
+}
+
+// Skip link para navegación
+.skip-to-nav {
+  @extend .skip-link;
+  
+  &:focus {
+    top: 40px;
+  }
+}
+
+// Skip link para búsqueda
+.skip-to-search {
+  @extend .skip-link;
+  
+  &:focus {
+    top: 80px;
+  }
+}

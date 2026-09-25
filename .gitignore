@@ -1,0 +1,9 @@
+# Respaldo de la conexión git original (Terapias-Bogota) — no subir al repo nuevo
+TestPage/.git-terapias-backup/
+
+# Dependencias
+node_modules/
+
+# Archivos temporales del sistema
+.DS_Store
+Thumbs.db
