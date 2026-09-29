@@ -1,0 +1,12 @@
+RequestId,ManualRequestType,ManualService,ManualSeconds,AIAssistedSeconds,AIRecommendationAccepted
+TB001,Appointment,Fisioterapia,3,1,TRUE
+TB002,Information,Terapia a domicilio,2,1,TRUE
+TB003,Reschedule,Otro,3,1,TRUE
+TB004,Reschedule,Rehabilitación,1,1,TRUE
+TB005,Information,Información general,1,1,TRUE
+TB006,Appointment,Rehabilitación,1,1,TRUE
+TB007,Information,Información general,1,1,TRUE
+TB008,Appointment,Reschedule,1,1,TRUE
+TB009,Cancellation,Otro,3,1,TRUE
+TB010,Information,Rehabilitación,1,1,TRUE
+``

@@ -1,0 +1,320 @@
+commit d2c8a46f5ffab32f34ee93271ac1b2a1c11ba053
+Author: Anderson Mantilla Alfonso <anderson.mantilla@globant.com>
+Date:   2026-09-29 15:36:59 -0500
+
+    docs: add measured AI business value evidence
+
+ TestPage/docs/business_value.md           | 212 ++++++++++++++++++++++++++++++
+ TestPage/evaluation/value_measurement.csv |  12 ++
+ 2 files changed, 224 insertions(+)
+
+commit 68fd3a835cb61a692685a293bc07e6f676e67c9b
+Author: Anderson Mantilla Alfonso <anderson.mantilla@globant.com>
+Date:   2026-09-28 14:56:54 -0500
+
+    docs: add AI governance and human review controls
+
+ TestPage/governance/AI_Risk_Assessment.md  | 165 +++++++++++++++++++++++++++++
+ TestPage/governance/Decision_Log.md        | 158 +++++++++++++++++++++++++++
+ TestPage/governance/Human_Review_Policy.md | 120 +++++++++++++++++++++
+ 3 files changed, 443 insertions(+)
+
+commit c0a4cb9346c47fabe20a62cf0714e08361939e06
+Author: Anderson Mantilla Alfonso <anderson.mantilla@globant.com>
+Date:   2026-09-28 14:43:35 -0500
+
+    test: complete AI triage v3 evaluation
+
+ TestPage/evaluation/evaluation_summary.md | 182 ++++++++++++++++++++++++++++++
+ TestPage/evaluation/results_v3.csv        |  32 ++++++
+ 2 files changed, 214 insertions(+)
+
+commit 14b942cbc7edee5043f333ed8e08f947dd22a5fb
+Author: Anderson Mantilla Alfonso <anderson.mantilla@globant.com>
+Date:   2026-09-28 14:17:14 -0500
+
+    refactor: distinguish general hours from booking availability in v3
+
+ TestPage/ai/prompts/triage_v3.md | 212 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 212 insertions(+)
+
+commit af4324446311f3c26565180fb6f85e9c594d7f7a
+Author: Anderson Mantilla Alfonso <anderson.mantilla@globant.com>
+Date:   2026-09-28 14:13:00 -0500
+
+    test: evaluate AI triage v2 and document regression
+
+ TestPage/evaluation/error_analysis_v2.md | 228 +++++++++++++++++++++++++++++++
+ TestPage/evaluation/results_v2.csv       |  31 +++++
+ 2 files changed, 259 insertions(+)
+
+commit 76e85b6fa1591180ba38970b81deedce6ef64adf
+Author: Anderson Mantilla Alfonso <anderson.mantilla@globant.com>
+Date:   2026-09-28 11:53:55 -0500
+
+    refactor: refine AI triage availability rules in v2
+
+ TestPage/ai/prompts/triage_v2.md | 133 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 133 insertions(+)
+
+commit 03efc7c3934c90664de40e5849c932d2da644fb4
+Author: Anderson Mantilla Alfonso <anderson.mantilla@globant.com>
+Date:   2026-09-28 11:48:55 -0500
+
+    test: evaluate AI triage v1 and document errors
+
+ TestPage/evaluation/error_analysis_v1.md | 207 +++++++++++++++++++++++++++++++
+ 1 file changed, 207 insertions(+)
+
+commit 805d8381a4600752786793b42da2cdf4309ee19a
+Author: Anderson Mantilla Alfonso <anderson.mantilla@globant.com>
+Date:   2026-09-28 11:36:04 -0500
+
+    test: record AI triage v1 predictions
+
+ TestPage/evaluation/results_v1.csv | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+
+commit 00d82e10b812613bb0b1399699e55f2756e8588a
+Author: Anderson Mantilla Alfonso <anderson.mantilla@globant.com>
+Date:   2026-09-28 11:27:30 -0500
+
+    feat: add baseline AI triage prompt v1
+
+ TestPage/ai/prompts/triage_v1.md | 50 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 50 insertions(+)
+
+commit 1f1f59be5f7508b6ba0532df80b7eab807a66796
+Author: Anderson Mantilla Alfonso <anderson.mantilla@globant.com>
+Date:   2026-09-25 17:37:30 -0500
+
+    test: add AI triage dataset and ground truth
+
+ TestPage/evaluation/README.md        | 56 ++++++++++++++++++++++++++++++++++++
+ TestPage/evaluation/cases.csv        | 31 ++++++++++++++++++++
+ TestPage/evaluation/ground_truth.csv | 31 ++++++++++++++++++++
+ 3 files changed, 118 insertions(+)
+
+commit 7b30016b0081b40c06963ab865bf9187e3ce5a9a
+Author: Anderson Mantilla Alfonso <anderson.mantilla@globant.com>
+Date:   2026-09-25 17:25:26 -0500
+
+    feat: add Salesforce AI lead triage data model
+
+ .gitignore                                         | 15 ++++++++-
+ .../Lead/fields/AI_Accepted__c.field-meta.xml      |  8 +++++
+ .../Lead/fields/AI_Category__c.field-meta.xml      | 11 ++++++
+ .../Lead/fields/AI_Confidence__c.field-meta.xml    | 12 +++++++
+ .../Lead/fields/AI_Reason__c.field-meta.xml        |  9 +++++
+ .../Lead/fields/AI_Reviewed__c.field-meta.xml      |  8 +++++
+ .../Lead/fields/Request_Type__c.field-meta.xml     | 39 ++++++++++++++++++++++
+ .../fields/Requested_Service__c.field-meta.xml     | 39 ++++++++++++++++++++++
+ 8 files changed, 140 insertions(+), 1 deletion(-)
+
+commit 2de55cd9133c043951118e8ffe2870a3bc28c4e1
+Author: Andma2020 <anderman8021@hotmail.com>
+Date:   2026-09-25 15:06:51 -0500
+
+    Versión independiente del proyecto TestPage
+    
+    Copia separada del proyecto original para desarrollo independiente.
+    
+    Co-Authored-By: CODA <coda@globant.com>
+
+ .gitignore                                         |     9 +
+ TestPage/.gitignore                                |     6 +
+ TestPage/404.html                                  |   205 +
+ TestPage/about.html                                |   412 +
+ TestPage/admin-login.html                          |   213 +
+ TestPage/admin.html                                |   725 ++
+ TestPage/appointment.html                          |   407 +
+ TestPage/blog.html                                 |   235 +
+ TestPage/config/package-lock.json                  |   645 ++
+ TestPage/config/package.json                       |    20 +
+ TestPage/contact.html                              |   349 +
+ TestPage/css/bootstrap.min.css                     |     2 +
+ TestPage/css/style.css                             |  1145 ++
+ TestPage/docs/ACCESIBILIDAD.md                     |   301 +
+ TestPage/docs/COMANDOS_GITHUB.md                   |    56 +
+ TestPage/docs/ESTRUCTURA.md                        |   400 +
+ TestPage/docs/GITHUB_PAGES.md                      |    80 +
+ TestPage/docs/GIT_AUTOMATION.md                    |   257 +
+ TestPage/docs/READ-ME.txt                          |     2 +
+ TestPage/docs/README.md                            |   227 +
+ TestPage/docs/RESUMEN_ORGANIZACION.md              |   186 +
+ TestPage/docs/SERVIDOR.md                          |    38 +
+ TestPage/docs/SISTEMA_DB.md                        |   335 +
+ TestPage/feature.html                              |   276 +
+ TestPage/img/about-1.jpg                           |   Bin 0 -> 62830 bytes
+ TestPage/img/about-2.jpg                           |   Bin 0 -> 17979 bytes
+ TestPage/img/blog-1.jpg                            |   Bin 0 -> 20876 bytes
+ TestPage/img/blog-2.jpg                            |   Bin 0 -> 31910 bytes
+ TestPage/img/blog-3.jpg                            |   Bin 0 -> 33888 bytes
+ TestPage/img/carousel-1.jpg                        |   Bin 0 -> 64275 bytes
+ TestPage/img/carousel-2.jpg                        |   Bin 0 -> 64841 bytes
+ TestPage/img/favicon.svg                           |    24 +
+ TestPage/img/service-1.jpg                         |   Bin 0 -> 19691 bytes
+ TestPage/img/service-2.jpg                         |   Bin 0 -> 23473 bytes
+ TestPage/img/service-3.jpg                         |   Bin 0 -> 22134 bytes
+ TestPage/img/service-4.jpg                         |   Bin 0 -> 13786 bytes
+ TestPage/img/service-5.jpg                         |   Bin 0 -> 26229 bytes
+ TestPage/img/service-6.jpg                         |   Bin 0 -> 24667 bytes
+ TestPage/img/service-7.jpg                         |   Bin 0 -> 13365 bytes
+ TestPage/img/service-8.jpg                         |   Bin 0 -> 27006 bytes
+ TestPage/img/team-1.jpg                            |   Bin 0 -> 31318 bytes
+ TestPage/img/team-2.jpg                            |   Bin 0 -> 18085 bytes
+ TestPage/img/team-3.jpg                            |   Bin 0 -> 63246 bytes
+ TestPage/img/team-4.jpg                            |   Bin 0 -> 35294 bytes
+ TestPage/img/testimonial-img.jpg                   |   Bin 0 -> 3282 bytes
+ TestPage/img/video-img.jpg                         |   Bin 0 -> 40193 bytes
+ TestPage/index.html                                |   819 ++
+ TestPage/js/accessibility.js                       |   514 +
+ TestPage/js/auth-manager.js                        |    93 +
+ TestPage/js/firebase-config.js                     |    37 +
+ TestPage/js/form-manager-v2.js                     |   377 +
+ TestPage/js/form-manager.js                        |   153 +
+ TestPage/js/main.js                                |   129 +
+ TestPage/lib/animate/animate.css                   |  1571 +++
+ TestPage/lib/animate/animate.min.css               |     3 +
+ TestPage/lib/easing/easing.js                      |   162 +
+ TestPage/lib/easing/easing.min.js                  |     1 +
+ TestPage/lib/owlcarousel/LICENSE                   |     1 +
+ TestPage/lib/owlcarousel/assets/ajax-loader.gif    |   Bin 0 -> 3208 bytes
+ TestPage/lib/owlcarousel/assets/owl.carousel.css   |   163 +
+ .../lib/owlcarousel/assets/owl.carousel.min.css    |     2 +
+ .../lib/owlcarousel/assets/owl.theme.default.css   |    42 +
+ .../owlcarousel/assets/owl.theme.default.min.css   |     1 +
+ .../lib/owlcarousel/assets/owl.theme.green.css     |    42 +
+ .../lib/owlcarousel/assets/owl.theme.green.min.css |     1 +
+ TestPage/lib/owlcarousel/assets/owl.video.play.png |   Bin 0 -> 4976 bytes
+ TestPage/lib/owlcarousel/owl.carousel.js           |  3275 ++++++
+ TestPage/lib/owlcarousel/owl.carousel.min.js       |     2 +
+ TestPage/lib/waypoints/links.php                   |     5 +
+ TestPage/lib/waypoints/waypoints.min.js            |     1 +
+ TestPage/lib/wow/wow.js                            |   536 +
+ TestPage/lib/wow/wow.min.js                        |     3 +
+ TestPage/package.json                              |    20 +
+ TestPage/scripts/git-automation.js                 |   275 +
+ TestPage/scss/MAINTENANCE.md                       |   245 +
+ TestPage/scss/README.md                            |   109 +
+ TestPage/scss/_example.scss                        |   188 +
+ TestPage/scss/accessibility/_focus.scss            |    55 +
+ TestPage/scss/accessibility/_forms.scss            |   164 +
+ TestPage/scss/accessibility/_high-contrast.scss    |    56 +
+ TestPage/scss/accessibility/_main.scss             |   233 +
+ TestPage/scss/accessibility/_reduced-motion.scss   |    59 +
+ TestPage/scss/accessibility/_skip-links.scss       |    50 +
+ TestPage/scss/accessibility/_typography.scss       |   175 +
+ TestPage/scss/bootstrap.scss                       |     6 +
+ TestPage/scss/bootstrap/scss/_accordion.scss       |   117 +
+ TestPage/scss/bootstrap/scss/_alert.scss           |    57 +
+ TestPage/scss/bootstrap/scss/_badge.scss           |    29 +
+ TestPage/scss/bootstrap/scss/_breadcrumb.scss      |    28 +
+ TestPage/scss/bootstrap/scss/_button-group.scss    |   139 +
+ TestPage/scss/bootstrap/scss/_buttons.scss         |   111 +
+ TestPage/scss/bootstrap/scss/_card.scss            |   214 +
+ TestPage/scss/bootstrap/scss/_carousel.scss        |   213 +
+ TestPage/scss/bootstrap/scss/_close.scss           |    35 +
+ TestPage/scss/bootstrap/scss/_containers.scss      |    40 +
+ TestPage/scss/bootstrap/scss/_dropdown.scss        |   236 +
+ TestPage/scss/bootstrap/scss/_forms.scss           |     9 +
+ TestPage/scss/bootstrap/scss/_functions.scss       |   188 +
+ TestPage/scss/bootstrap/scss/_grid.scss            |    22 +
+ TestPage/scss/bootstrap/scss/_helpers.scss         |     7 +
+ TestPage/scss/bootstrap/scss/_images.scss          |    35 +
+ TestPage/scss/bootstrap/scss/_list-group.scss      |   157 +
+ TestPage/scss/bootstrap/scss/_mixins.scss          |    38 +
+ TestPage/scss/bootstrap/scss/_modal.scss           |   212 +
+ TestPage/scss/bootstrap/scss/_nav.scss             |   132 +
+ TestPage/scss/bootstrap/scss/_navbar.scss          |   272 +
+ TestPage/scss/bootstrap/scss/_offcanvas.scss       |    77 +
+ TestPage/scss/bootstrap/scss/_pagination.scss      |    64 +
+ TestPage/scss/bootstrap/scss/_popover.scss         |   155 +
+ TestPage/scss/bootstrap/scss/_progress.scss        |    47 +
+ TestPage/scss/bootstrap/scss/_reboot.scss          |   537 +
+ TestPage/scss/bootstrap/scss/_root.scss            |    15 +
+ TestPage/scss/bootstrap/scss/_spinners.scss        |    66 +
+ TestPage/scss/bootstrap/scss/_tables.scss          |   137 +
+ TestPage/scss/bootstrap/scss/_toasts.scss          |    51 +
+ TestPage/scss/bootstrap/scss/_tooltip.scss         |   112 +
+ TestPage/scss/bootstrap/scss/_transitions.scss     |    21 +
+ TestPage/scss/bootstrap/scss/_type.scss            |   104 +
+ TestPage/scss/bootstrap/scss/_utilities.scss       |   574 +
+ TestPage/scss/bootstrap/scss/_variables.scss       |  1388 +++
+ TestPage/scss/bootstrap/scss/bootstrap-grid.css    |  4045 +++++++
+ .../scss/bootstrap/scss/bootstrap-grid.css.map     |     1 +
+ TestPage/scss/bootstrap/scss/bootstrap-grid.scss   |    59 +
+ TestPage/scss/bootstrap/scss/bootstrap-reboot.css  |   417 +
+ .../scss/bootstrap/scss/bootstrap-reboot.css.map   |     1 +
+ TestPage/scss/bootstrap/scss/bootstrap-reboot.scss |     6 +
+ .../scss/bootstrap/scss/bootstrap-utilities.css    |  3950 +++++++
+ .../bootstrap/scss/bootstrap-utilities.css.map     |     1 +
+ .../scss/bootstrap/scss/bootstrap-utilities.scss   |    11 +
+ TestPage/scss/bootstrap/scss/bootstrap.css         |  9764 +++++++++++++++++
+ TestPage/scss/bootstrap/scss/bootstrap.css.map     |     1 +
+ TestPage/scss/bootstrap/scss/bootstrap.scss        |    45 +
+ .../bootstrap/scss/forms/_floating-labels.scss     |    61 +
+ .../scss/bootstrap/scss/forms/_form-check.scss     |   152 +
+ .../scss/bootstrap/scss/forms/_form-control.scss   |   219 +
+ .../scss/bootstrap/scss/forms/_form-range.scss     |    91 +
+ .../scss/bootstrap/scss/forms/_form-select.scss    |    65 +
+ TestPage/scss/bootstrap/scss/forms/_form-text.scss |    11 +
+ .../scss/bootstrap/scss/forms/_input-group.scss    |   121 +
+ TestPage/scss/bootstrap/scss/forms/_labels.scss    |    36 +
+ .../scss/bootstrap/scss/forms/_validation.scss     |    12 +
+ .../scss/bootstrap/scss/helpers/_clearfix.scss     |     3 +
+ .../bootstrap/scss/helpers/_colored-links.scss     |    12 +
+ .../scss/bootstrap/scss/helpers/_position.scss     |    30 +
+ TestPage/scss/bootstrap/scss/helpers/_ratio.scss   |    25 +
+ .../bootstrap/scss/helpers/_stretched-link.scss    |    15 +
+ .../bootstrap/scss/helpers/_text-truncation.scss   |     7 +
+ .../bootstrap/scss/helpers/_visually-hidden.scss   |     8 +
+ TestPage/scss/bootstrap/scss/mixins/_alert.scss    |    11 +
+ .../scss/bootstrap/scss/mixins/_border-radius.scss |    78 +
+ .../scss/bootstrap/scss/mixins/_box-shadow.scss    |    18 +
+ .../scss/bootstrap/scss/mixins/_breakpoints.scss   |    97 +
+ TestPage/scss/bootstrap/scss/mixins/_buttons.scss  |   128 +
+ TestPage/scss/bootstrap/scss/mixins/_caret.scss    |    64 +
+ TestPage/scss/bootstrap/scss/mixins/_clearfix.scss |     9 +
+ .../scss/bootstrap/scss/mixins/_color-scheme.scss  |     7 +
+ .../scss/bootstrap/scss/mixins/_container.scss     |     9 +
+ .../scss/bootstrap/scss/mixins/_deprecate.scss     |     7 +
+ TestPage/scss/bootstrap/scss/mixins/_forms.scss    |   134 +
+ .../scss/bootstrap/scss/mixins/_gradients.scss     |    45 +
+ TestPage/scss/bootstrap/scss/mixins/_grid.scss     |   120 +
+ TestPage/scss/bootstrap/scss/mixins/_image.scss    |     9 +
+ .../scss/bootstrap/scss/mixins/_list-group.scss    |    24 +
+ TestPage/scss/bootstrap/scss/mixins/_lists.scss    |     7 +
+ .../scss/bootstrap/scss/mixins/_pagination.scss    |    31 +
+ .../scss/bootstrap/scss/mixins/_reset-text.scss    |    17 +
+ TestPage/scss/bootstrap/scss/mixins/_resize.scss   |     6 +
+ .../bootstrap/scss/mixins/_table-variants.scss     |    21 +
+ .../scss/bootstrap/scss/mixins/_text-truncate.scss |     8 +
+ .../scss/bootstrap/scss/mixins/_transition.scss    |    26 +
+ .../scss/bootstrap/scss/mixins/_utilities.scss     |    68 +
+ .../bootstrap/scss/mixins/_visually-hidden.scss    |    22 +
+ TestPage/scss/bootstrap/scss/utilities/_api.scss   |    47 +
+ TestPage/scss/bootstrap/scss/vendor/_rfs.scss      |   303 +
+ TestPage/scss/compiled/bootstrap.css               | 10487 +++++++++++++++++++
+ TestPage/scss/compiled/bootstrap.css.map           |     1 +
+ TestPage/scss/components/_alerts.scss              |    37 +
+ TestPage/scss/components/_badges.scss              |    33 +
+ TestPage/scss/components/_buttons.scss             |    72 +
+ TestPage/scss/components/_cards.scss               |    56 +
+ TestPage/scss/components/_forms.scss               |    64 +
+ TestPage/scss/layout/_footer.scss                  |    93 +
+ TestPage/scss/layout/_header.scss                  |    72 +
+ TestPage/scss/layout/_hero.scss                    |    96 +
+ TestPage/scss/layout/_sections.scss                |   152 +
+ TestPage/scss/main.scss                            |   137 +
+ TestPage/scss/utilities/_animations.scss           |   104 +
+ TestPage/scss/utilities/_helpers.scss              |   125 +
+ TestPage/scss/variables/_borders.scss              |    15 +
+ TestPage/scss/variables/_colors.scss               |    26 +
+ TestPage/scss/variables/_spacing.scss              |    21 +
+ TestPage/scss/variables/_typography.scss           |    22 +
+ TestPage/service.html                              |   435 +
+ TestPage/team.html                                 |   294 +
+ TestPage/test-form.html                            |   203 +
+ TestPage/testimonial.html                          |   268 +
+ 196 files changed, 55060 insertions(+)

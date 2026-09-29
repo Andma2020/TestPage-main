@@ -1,0 +1,12 @@
+d2c8a46 | 2026-09-29 15:36:59 -0500 | Anderson Mantilla Alfonso | docs: add measured AI business value evidence
+68fd3a8 | 2026-09-28 14:56:54 -0500 | Anderson Mantilla Alfonso | docs: add AI governance and human review controls
+c0a4cb9 | 2026-09-28 14:43:35 -0500 | Anderson Mantilla Alfonso | test: complete AI triage v3 evaluation
+14b942c | 2026-09-28 14:17:14 -0500 | Anderson Mantilla Alfonso | refactor: distinguish general hours from booking availability in v3
+af43244 | 2026-09-28 14:13:00 -0500 | Anderson Mantilla Alfonso | test: evaluate AI triage v2 and document regression
+76e85b6 | 2026-09-28 11:53:55 -0500 | Anderson Mantilla Alfonso | refactor: refine AI triage availability rules in v2
+03efc7c | 2026-09-28 11:48:55 -0500 | Anderson Mantilla Alfonso | test: evaluate AI triage v1 and document errors
+805d838 | 2026-09-28 11:36:04 -0500 | Anderson Mantilla Alfonso | test: record AI triage v1 predictions
+00d82e1 | 2026-09-28 11:27:30 -0500 | Anderson Mantilla Alfonso | feat: add baseline AI triage prompt v1
+1f1f59b | 2026-09-25 17:37:30 -0500 | Anderson Mantilla Alfonso | test: add AI triage dataset and ground truth
+7b30016 | 2026-09-25 17:25:26 -0500 | Anderson Mantilla Alfonso | feat: add Salesforce AI lead triage data model
+2de55cd | 2026-09-25 15:06:51 -0500 | Andma2020 | Versión independiente del proyecto TestPage

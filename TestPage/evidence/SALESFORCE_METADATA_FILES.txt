@@ -1,0 +1,16 @@
+ Volume in drive C is Windows
+ Volume Serial Number is E2BC-F7A7
+
+ Directory of C:\Users\anderson.mantilla\TestPage-main\salesforce\force-app\main\default\objects\Lead\fields
+
+09/25/2026  05:12 PM    <DIR>          .
+09/25/2026  05:10 PM    <DIR>          ..
+09/25/2026  05:12 PM               299 AI_Accepted__c.field-meta.xml
+09/25/2026  05:10 PM               374 AI_Category__c.field-meta.xml
+09/25/2026  05:11 PM               405 AI_Confidence__c.field-meta.xml
+09/25/2026  05:11 PM               322 AI_Reason__c.field-meta.xml
+09/25/2026  05:11 PM               299 AI_Reviewed__c.field-meta.xml
+09/25/2026  05:10 PM             1,366 Requested_Service__c.field-meta.xml
+09/25/2026  05:10 PM             1,314 Request_Type__c.field-meta.xml
+               7 File(s)          4,379 bytes
+               2 Dir(s)  385,932,529,664 bytes free

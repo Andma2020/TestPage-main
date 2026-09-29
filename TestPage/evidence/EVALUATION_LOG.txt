@@ -1,0 +1,615 @@
+# AI Triage V1 - Error Analysis
+
+## Evaluation Summary
+
+Total test cases: 30
+
+### Request Type
+
+Correct: 28
+Incorrect: 2
+Accuracy: 93.33%
+
+### Requested Service
+
+Correct: 30
+Incorrect: 0
+Accuracy: 100%
+
+### Complete Classification
+
+Both Request Type and Requested Service correct:
+
+28 / 30
+
+Overall complete classification accuracy:
+
+93.33%
+
+---
+
+## Results by Difficulty
+
+### Easy
+
+18 / 18 complete classifications correct
+
+Accuracy: 100%
+
+### Medium
+
+8 / 10 complete classifications correct
+
+Accuracy: 80%
+
+### Hard
+
+2 / 2 complete classifications correct
+
+Accuracy: 100%
+
+The Hard subset contains only two cases, so this result
+should not be interpreted as evidence that V1 performs
+better on Hard cases than Medium cases.
+
+---
+
+## Incorrect Cases
+
+### TB019
+
+Message:
+
+Quiero saber si tienen disponibilidad para una visita a domicilio.
+
+Expected Request Type:
+
+Appointment
+
+Predicted Request Type:
+
+Information
+
+Expected Service:
+
+Terapia a domicilio
+
+Predicted Service:
+
+Terapia a domicilio
+
+AI Confidence:
+
+0.82
+
+Result:
+
+Request Type: FAIL
+Requested Service: PASS
+
+---
+
+### TB026
+
+Message:
+
+¿Tienen disponibilidad para rehabilitación esta semana?
+
+Expected Request Type:
+
+Appointment
+
+Predicted Request Type:
+
+Information
+
+Expected Service:
+
+Rehabilitación
+
+Predicted Service:
+
+Rehabilitación
+
+AI Confidence:
+
+0.84
+
+Result:
+
+Request Type: FAIL
+Requested Service: PASS
+
+---
+
+## Error Pattern Identified
+
+Both classification failures involve customers asking
+about service availability.
+
+Prompt V1 interpreted availability questions as
+Information requests.
+
+However, the Ground Truth defined these requests as
+Appointment because the customer is asking about
+availability for receiving a specific service.
+
+---
+
+## Root Cause Hypothesis
+
+Prompt V1 defines the available Request Type values but
+does not define the semantic difference between:
+
+- Information
+- Appointment
+
+As a result, availability requests can reasonably be
+interpreted as either category.
+
+The classification rule is therefore underspecified.
+
+---
+
+## Human Assessment
+
+The problem should not be corrected by adding individual
+examples for TB019 and TB026.
+
+Instead, Prompt V2 should introduce an explicit business
+rule that defines how availability requests are classified.
+
+Proposed distinction:
+
+Information:
+
+The customer is requesting general information about
+a service without expressing scheduling intent.
+
+Appointment:
+
+The customer requests a booking or asks about availability
+for receiving a specific service or session.
+
+---
+
+## Confidence Observation
+
+The two incorrect Request Type predictions also had
+relatively lower confidence values:
+
+TB019: 0.82
+
+TB026: 0.84
+
+This observation may support evaluating a confidence-based
+human review threshold in a future iteration.
+
+No threshold will be introduced based solely on these two
+cases.
+
+---
+
+## Proposed V2 Refinement
+
+Prompt V2 should:
+
+1. Explicitly define Appointment.
+2. Explicitly define Information.
+3. Establish a business rule for availability requests.
+4. Preserve the existing Requested Service taxonomy.
+5. Preserve the restriction against medical diagnosis,
+   treatment recommendations, and clinical assessment.
+
+The Ground Truth dataset will remain unchanged.
+
+V2 will be evaluated against exactly the same 30 cases
+to allow direct comparison with V1.# AI Triage V2 - Error Analysis
+
+## Evaluation Summary
+
+Total test cases: 30
+
+### Request Type
+
+Correct: 29
+Incorrect: 1
+Accuracy: 96.67%
+
+### Requested Service
+
+Correct: 30
+Incorrect: 0
+Accuracy: 100%
+
+### Complete Classification
+
+Both Request Type and Requested Service correct:
+
+29 / 30
+
+Complete classification accuracy:
+
+96.67%
+
+---
+
+## Comparison with V1
+
+### V1
+
+Request Type Accuracy: 93.33%
+
+Requested Service Accuracy: 100%
+
+Complete Classification Accuracy: 93.33%
+
+### V2
+
+Request Type Accuracy: 96.67%
+
+Requested Service Accuracy: 100%
+
+Complete Classification Accuracy: 96.67%
+
+### Observed Improvement
+
+Request Type:
+
++3.33 percentage points
+
+Complete Classification:
+
++3.33 percentage points
+
+Requested Service remained unchanged at 100%.
+
+---
+
+## V1 Errors Corrected
+
+### TB019
+
+V1:
+
+Information
+
+Result:
+
+FAIL
+
+V2:
+
+Appointment
+
+Result:
+
+PASS
+
+---
+
+### TB026
+
+V1:
+
+Information
+
+Result:
+
+FAIL
+
+V2:
+
+Appointment
+
+Result:
+
+PASS
+
+---
+
+## Regression Introduced in V2
+
+### TB007
+
+Message:
+
+¿Cuáles son los horarios disponibles para fisioterapia?
+
+Expected Request Type:
+
+Information
+
+V1:
+
+Information
+
+Result:
+
+PASS
+
+V2:
+
+Appointment
+
+Result:
+
+FAIL
+
+Expected Service:
+
+Fisioterapia
+
+V2 Service:
+
+Fisioterapia
+
+Service Result:
+
+PASS
+
+---
+
+## Regression Analysis
+
+V2 successfully corrected the ambiguity identified in
+TB019 and TB026.
+
+However, the new availability rule is too broad.
+
+Prompt V2 interprets language related to "horarios disponibles"
+as scheduling intent.
+
+The Ground Truth distinguishes between:
+
+1. General questions about service schedules or hours.
+
+2. Availability for receiving a service during a specific
+   period.
+
+These two situations require different classifications.
+
+---
+
+## Human Assessment
+
+V2 represents a measurable improvement over V1.
+
+Complete classification accuracy increased from:
+
+93.33%
+
+to:
+
+96.67%
+
+However, V2 introduced a regression in TB007.
+
+The appropriate response is not to modify the Ground Truth.
+
+Instead, the classification rule should be refined again.
+
+---
+
+## Proposed V3 Rule
+
+Information should be used when the customer asks about:
+
+- general operating hours;
+- general service schedules;
+- how a service works;
+- general characteristics of a service.
+
+Appointment should be used when the customer:
+
+- explicitly requests a booking;
+- requests an appointment;
+- asks about availability for receiving a specific service
+  during a specific period;
+- asks about availability for a specific visit or session.
+
+Examples:
+
+"¿Cuáles son los horarios disponibles para fisioterapia?"
+
+→ Information
+
+"¿Tienen disponibilidad para rehabilitación esta semana?"
+
+→ Appointment
+
+"¿Tienen disponibilidad para una visita a domicilio?"
+
+→ Appointment
+
+---
+
+## V3 Objective
+
+V3 should preserve the V2 corrections for TB019 and TB026
+while correcting the TB007 regression.
+
+The same 30-case Ground Truth dataset will be used again.
+
+No changes will be made to the Ground Truth.# AI Triage Evaluation Summary
+
+## Evaluation Dataset
+
+Total cases:
+
+30
+
+Data type:
+
+Synthetic administrative requests.
+
+The Ground Truth was defined and versioned before
+the AI evaluation.
+
+The same dataset and Ground Truth were used to
+evaluate V1, V2 and V3.
+
+---
+
+# V1
+
+## Request Type
+
+Correct: 28 / 30
+
+Accuracy: 93.33%
+
+## Requested Service
+
+Correct: 30 / 30
+
+Accuracy: 100%
+
+## Complete Classification
+
+Correct: 28 / 30
+
+Accuracy: 93.33%
+
+## Observed Problem
+
+V1 incorrectly classified TB019 and TB026 as Information.
+
+Both requests concerned availability for receiving a
+specific service.
+
+---
+
+# V2
+
+## Request Type
+
+Correct: 29 / 30
+
+Accuracy: 96.67%
+
+## Requested Service
+
+Correct: 30 / 30
+
+Accuracy: 100%
+
+## Complete Classification
+
+Correct: 29 / 30
+
+Accuracy: 96.67%
+
+## Improvement
+
+V2 corrected:
+
+- TB019
+- TB026
+
+However, V2 introduced a regression:
+
+- TB007
+
+TB007 asked about general available hours for
+physiotherapy.
+
+V2 incorrectly interpreted this as appointment intent.
+
+---
+
+# V3
+
+## Request Type
+
+Correct:
+
+30 / 30
+
+Accuracy:
+
+100%
+
+## Requested Service
+
+Correct:
+
+30 / 30
+
+Accuracy:
+
+100%
+
+## Complete Classification
+
+Correct:
+
+30 / 30
+
+Accuracy:
+
+100%
+
+---
+
+# Refinement Result
+
+| Metric | V1 | V2 | V3 |
+|---|---:|---:|---:|
+| Request Type | 93.33% | 96.67% | 100% |
+| Requested Service | 100% | 100% | 100% |
+| Complete Classification | 93.33% | 96.67% | 100% |
+
+The progression demonstrates measurable refinement:
+
+V1
+→ evaluation
+→ error analysis
+→ V2
+→ regression testing
+→ error analysis
+→ V3
+
+---
+
+# Key Refinement
+
+The primary classification challenge involved
+distinguishing:
+
+General service schedules
+
+from:
+
+Availability for receiving a service during a
+specific period.
+
+V3 introduced an explicit semantic distinction.
+
+General service hours:
+
+→ Information
+
+Specific availability for receiving a service:
+
+→ Appointment
+
+---
+
+# Evaluation Limitation
+
+The V3 result must not be interpreted as evidence that
+the AI system has universal 100% accuracy.
+
+The evaluation contains:
+
+- 30 cases;
+- synthetic data;
+- controlled categories;
+- a specific administrative use case.
+
+The result demonstrates that V3 correctly classified
+all cases contained in this controlled evaluation set.
+
+Additional testing would be required before broader
+production use.
